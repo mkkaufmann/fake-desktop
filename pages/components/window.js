@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Text, SimpleGrid } from "@chakra-ui/core";
 import Draggable from "react-draggable";
+import Typist from "react-typist";
+import { Command } from "./command";
 export const Window = ({ title }) => {
   const commands = [
     {
@@ -23,8 +25,8 @@ export const Window = ({ title }) => {
     <Draggable
       handle=".window-handle"
       defaultPosition={{
-        x: window.innerWidth / 2 - 250,
-        y: window.innerHeight / 2 - 160,
+        x: 0,
+        y: 0,
       }}
     >
       <Box w="500px">
@@ -63,37 +65,7 @@ export const Window = ({ title }) => {
           p={1}
         >
           {commands.map((command) => {
-            return (
-              <Box key={command.command}>
-                <Text
-                  my={0}
-                  fontWeight={500}
-                  fontSize="sm"
-                  fontFamily="monospace"
-                >
-                  <span style={{ color: "#fff", "padding-right": "5px" }}>
-                    {`⭢ ${command.dir}`}
-                  </span>
-                  <span style={{ color: "#ffcb05" }}>{command.command}</span>
-                </Text>
-
-                <SimpleGrid columns={2}>
-                  {command.output.map((chunk) => {
-                    return (
-                      <Text
-                        my={0}
-                        color="white"
-                        fontSize="sm"
-                        fontWeight="500"
-                        fontFamily="monospace"
-                      >
-                        {chunk}
-                      </Text>
-                    );
-                  })}
-                </SimpleGrid>
-              </Box>
-            );
+            return <Command key={command.command} command={command} />;
           })}
 
           <Text my={0} fontWeight={500} fontSize="sm" fontFamily="monospace">
