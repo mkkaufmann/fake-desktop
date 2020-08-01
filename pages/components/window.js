@@ -1,11 +1,22 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/core";
+import { Box, Text, SimpleGrid } from "@chakra-ui/core";
 import Draggable from "react-draggable";
 export const Window = ({ title }) => {
   const commands = [
     {
       dir: "~",
-      command: "",
+      command: "ls",
+      output: ["Projects", "Resume"],
+    },
+    {
+      dir: "~",
+      command: "cd Projects",
+      output: [],
+    },
+    {
+      dir: "Projects",
+      command: "ls",
+      output: ["Set", "MorseCode", "Vex2019"],
     },
   ];
   return (
@@ -33,12 +44,12 @@ export const Window = ({ title }) => {
             alignItems="center"
             position="absolute"
           >
-            <Box bg="red" borderRadius="10rem" w="10px" h="10px" mx={1} />
-            <Box bg="yellow" borderRadius="10rem" w="10px" h="10px" mr={1} />
-            <Box bg="green" borderRadius="10rem" w="10px" h="10px" mr={1} />
+            <Box bg="#ff605c" borderRadius="10rem" w="10px" h="10px" mx={1} />
+            <Box bg="#ffbd44" borderRadius="10rem" w="10px" h="10px" mr={1} />
+            <Box bg="#00ca4e" borderRadius="10rem" w="10px" h="10px" mr={1} />
           </Box>
           <Box />
-          <Text color="white" fontFamily="monospace" my={1}>
+          <Text color="white" fontFamily="monospace" my={1} userSelect="none">
             {title}
           </Text>
           <Box />
@@ -53,17 +64,43 @@ export const Window = ({ title }) => {
         >
           {commands.map((command) => {
             return (
-              <Text
-                color="#ffcb05"
-                mt={0}
-                fontWeight={1000}
-                fontSize="xl"
-                fontFamily="monospace"
-              >
-                {command.dir}
-              </Text>
+              <Box key={command.command}>
+                <Text
+                  my={0}
+                  fontWeight={500}
+                  fontSize="sm"
+                  fontFamily="monospace"
+                >
+                  <span style={{ color: "#fff", "padding-right": "5px" }}>
+                    {`⭢ ${command.dir}`}
+                  </span>
+                  <span style={{ color: "#ffcb05" }}>{command.command}</span>
+                </Text>
+
+                <SimpleGrid columns={2}>
+                  {command.output.map((chunk) => {
+                    return (
+                      <Text
+                        my={0}
+                        color="white"
+                        fontSize="sm"
+                        fontWeight="500"
+                        fontFamily="monospace"
+                      >
+                        {chunk}
+                      </Text>
+                    );
+                  })}
+                </SimpleGrid>
+              </Box>
             );
           })}
+
+          <Text my={0} fontWeight={500} fontSize="sm" fontFamily="monospace">
+            <span style={{ color: "#fff", "padding-right": "5px" }}>
+              {`⭢ ${commands[commands.length - 1].dir}`}
+            </span>
+          </Text>
         </Box>
       </Box>
     </Draggable>
