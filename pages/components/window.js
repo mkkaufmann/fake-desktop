@@ -64,7 +64,7 @@ export const Window = ({ title }) => {
           textAlign="left"
           p={1}
         >
-          {commands.map((command) => {
+          {commands.map((command, index) => {
             return <Command key={command.command} command={command} />;
           })}
 
