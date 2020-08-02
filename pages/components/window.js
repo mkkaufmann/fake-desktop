@@ -2,24 +2,7 @@ import React, { useState } from "react";
 import { Box, Text, SimpleGrid } from "@chakra-ui/core";
 import { Rnd } from "react-rnd";
 import { Command } from "./command";
-export const Window = ({ title }) => {
-  const commands = [
-    {
-      dir: "~",
-      command: "ls",
-      output: ["Projects", "Resume"],
-    },
-    {
-      dir: "~",
-      command: "cd Projects",
-      output: [],
-    },
-    {
-      dir: "Projects",
-      command: "ls",
-      output: ["Set", "MorseCode", "Vex2019"],
-    },
-  ];
+export const Window = ({ title, content, bg }) => {
   const [currentWidth, setCurrentWidth] = useState(600);
   const [currentHeight, setCurrentHeight] = useState(400);
   const [currentX, setCurrentX] = useState(0);
@@ -70,27 +53,12 @@ export const Window = ({ title }) => {
       <Box
         borderBottomLeftRadius="0.25rem"
         borderBottomRightRadius="0.25rem"
-        bg="#00274cdd"
+        bg={bg}
         textAlign="left"
         p={1}
         h={currentHeight - 20}
       >
-        {commands.map((command, index) => {
-          return (
-            <Command
-              key={command.command}
-              command={command}
-              isTyped={true}
-              delay={1000}
-            />
-          );
-        })}
-
-        <Text my={0} fontWeight={500} fontSize="sm" fontFamily="monospace">
-          <span style={{ color: "#fff", paddingRight: "5px" }}>
-            {`⭢ ${commands[commands.length - 1].dir}`}
-          </span>
-        </Text>
+        {content}
       </Box>
     </Rnd>
   );
