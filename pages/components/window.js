@@ -76,7 +76,14 @@ export const Window = ({ title }) => {
         h={currentHeight - 20}
       >
         {commands.map((command, index) => {
-          return <Command key={command.command} command={command} />;
+          return (
+            <Command
+              key={command.command}
+              command={command}
+              isTyped={true}
+              delay={1000}
+            />
+          );
         })}
 
         <Text my={0} fontWeight={500} fontSize="sm" fontFamily="monospace">

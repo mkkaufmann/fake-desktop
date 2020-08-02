@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Typist from "react-typist";
 import { Box, Text, SimpleGrid } from "@chakra-ui/core";
-export const Command = ({ command }) => {
+export const Command = ({ command, isTyped, delay, onTypingDone }) => {
   const [finishedTyping, setFinishedTyping] = useState(false);
   return (
     <Box>
@@ -10,12 +10,22 @@ export const Command = ({ command }) => {
           <span style={{ color: "#fff", paddingRight: "5px" }}>
             {`⭢ ${command.dir}`}
           </span>
-          <Typist onTypingDone={() => setFinishedTyping(true)}>
+          {!!isTyped ? (
+            <Typist
+              onTypingDone={() => {
+                setFinishedTyping(true);
+                //!!onTypingDone && onTypingDone();
+              }}
+              startDelay={delay}
+            >
+              <span style={{ color: "#ffcb05" }}>{command.command}</span>
+            </Typist>
+          ) : (
             <span style={{ color: "#ffcb05" }}>{command.command}</span>
-          </Typist>
+          )}
         </Box>
       </Text>
-      {!!finishedTyping && (
+      {(!!finishedTyping || !!!isTyped) && (
         <SimpleGrid columns={2} w="full">
           {command.output.map((chunk) => {
             return (

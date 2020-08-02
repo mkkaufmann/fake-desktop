@@ -5,9 +5,8 @@ import { Window } from "./components/window";
 import { ThemeProvider } from "@chakra-ui/core";
 import theme from "./theme";
 export default function Home() {
-  document.body.style.overflow = "hidden";
   return (
-    <Box className="App">
+    <Box className="App" overflow="hidden">
       <ThemeProvider theme={theme}>
         <Box
           w="100vw"
