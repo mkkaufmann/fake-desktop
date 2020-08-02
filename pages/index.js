@@ -5,10 +5,19 @@ import { Window } from "./components/window";
 import { ThemeProvider } from "@chakra-ui/core";
 import theme from "./theme";
 export default function Home() {
+  document.body.style.overflow = "hidden";
   return (
     <Box className="App">
       <ThemeProvider theme={theme}>
-        <Window title="Michael Kaufmann" />
+        <Box
+          w="100vw"
+          h="100vh"
+          backgroundImage="url(
+          https://i.pinimg.com/originals/93/65/1d/93651dceeee949437c20171dd3f7cd0e.jpg
+        )"
+        >
+          <Window title="Michael Kaufmann" />
+        </Box>
       </ThemeProvider>
     </Box>
   );
