@@ -69,7 +69,7 @@ export const Window = ({ title }) => {
           })}
 
           <Text my={0} fontWeight={500} fontSize="sm" fontFamily="monospace">
-            <span style={{ color: "#fff", "padding-right": "5px" }}>
+            <span style={{ color: "#fff", paddingRight: "5px" }}>
               {`⭢ ${commands[commands.length - 1].dir}`}
             </span>
           </Text>

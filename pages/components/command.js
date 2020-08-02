@@ -7,7 +7,7 @@ export const Command = ({ command }) => {
     <Box>
       <Text my={0} fontWeight={500} fontSize="sm" fontFamily="monospace">
         <Box display="flex" flexDirection="row" alignItems="center">
-          <span style={{ color: "#fff", "padding-right": "5px" }}>
+          <span style={{ color: "#fff", paddingRight: "5px" }}>
             {`⭢ ${command.dir}`}
           </span>
           <Typist onTypingDone={() => setFinishedTyping(true)}>
