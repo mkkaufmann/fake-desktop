@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import { Box } from "@chakra-ui/core";
 import { Terminal } from "./components/terminal";
 import { Browser } from "./components/browser";
+import { Cmd } from "./components/cmd";
 import { Window } from "./components/window";
 import { ThemeProvider } from "@chakra-ui/core";
 import theme from "./theme";
@@ -18,7 +19,8 @@ export default function Home() {
         )"
         >
           <Terminal title="hmm" />
-          <Browser url="https://www.w3schools.com" />
+          {/* // <Browser url="https://www.w3schools.com" /> */}
+          {/* // <Cmd title="cmd" /> */}
         </Box>
       </ThemeProvider>
     </Box>

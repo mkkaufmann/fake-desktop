@@ -11,7 +11,7 @@ export const Window = ({ title, content, bg }) => {
     <Rnd
       dragHandleClassName="window-handle"
       display="flex"
-      alignItems="stretch"
+      align-items="stretch"
       position={{ x: currentX, y: currentY }}
       size={{ width: currentWidth, height: currentHeight }}
       onDrag={(e, d) => {
